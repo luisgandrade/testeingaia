@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+    app:
+        container_name: app
+        build: 
+            context: .
+            args:
+                OPEN_WEATHER_API_KEY: "<<chave de api do open weather>>"
+                SPOTIFY_BEARER_TOKEN: "<<token de autenticação do spotify>>"
+        ports:
+            - "8080:80"
+        networks:
+            - net
+
+    redis:
+        container_name: redis
+        image: redis
+        networks:
+            - net
+
+networks:
+        net:
